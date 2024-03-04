@@ -10,6 +10,7 @@ import { DistrictCourt } from "./pages/DistrictCourt";
 import { HighCourt } from "./pages/HighCourt";
 import { UpdateNewCase } from "./pages/UpdateNewCase";
 import { TrackCase } from "./pages/TrackCase";
+import { Dashboard } from "./pages/Dashboard";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route exact path="/districtcourt/updatecase" element={<UpdateNewCase/>} />
         <Route exact path="/highcourt/updatecase" element={<UpdateNewCase/>} />
         <Route exact path="/trackcase" element={<TrackCase/>} />
+        <Route exact path="/dashboard" element={<Dashboard/>} />
       </Routes>
 
       <Footer />

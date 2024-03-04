@@ -7,6 +7,19 @@ export const TrackCase = () => {
     e.preventDefault();
 
     console.log(caseNo);
+
+
+    const downloadPDF = (pdf)=>{
+      const linkSource = `data:application/pdf;base64,${pdf}`;
+      const downloadLink = document.createElement("a");
+      const fileName = "abc.pdf";
+      downloadLink.href = linkSource;
+      downloadLink.download = fileName;
+      downloadLink.click();
+    
+    }
+
+
   };
 
   return (
