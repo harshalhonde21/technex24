@@ -42,7 +42,9 @@ export const addCase = async (req, res) => {
       newCase,
     });
   } catch (error) {
-    console.error("Error adding case:", error);
+
+    // console.error("Error adding case:", error);
+    console.log(error.message);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -71,10 +73,11 @@ export const getOneCase = async (req, res) => {
     const singleCase = await Case.findOne({ caseNo }); 
   
 
-    return res.status(200).json(singleCase);
+    return res.status(200).json({success:true,singleCase});
   } catch (error) {
-   res.staus(400).json({
-    succ
+   res.staus(500).json({
+    success: false,
+    message: error.message
    })
   }
 };
