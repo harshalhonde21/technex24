@@ -14,6 +14,8 @@ export const UpdateNewCase = () => {
   const handleSubmit = async (e) => {
     e.preventDefault() ;
 
+    console.log(caseData)
+
     const res = await axios.post("https://technex24.onrender.com/case/addCase",caseData) ;
 
     if(res.status){
@@ -23,7 +25,24 @@ export const UpdateNewCase = () => {
   }
 
 
-
+  // {
+  //   
+  //   "caseNo": "vvvvvbghbgsgasdf",
+  //   "caseDescription": "sas",
+  //   "caseCategory": "asdasd",
+  //   "court": "High Court",
+  //   "courtLocation": "asdas",
+  //   "filingDate": "2024-03-20",
+  //   "publicAffairs": "No",
+  //   "childrenInvolved": "No",
+  //   "soleEarningMembers": "Yes",
+  //   "holdCasesByDates": "Yes",
+  //   "status": "completed",
+  //     "parties": [
+    //     "asdasd"
+    //   ],
+  //   "file": "data:applicat"
+  // }
  
 
  
@@ -184,7 +203,7 @@ export const UpdateNewCase = () => {
                   onChange={(e)=>{
                     setCaseData({
                       ...caseData,
-                      holdCasesByDates: e.target.value
+                      oldCasesByDates: e.target.value
                     })
                   }}
                   defaultValue="Hold Cases By Dates"
