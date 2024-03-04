@@ -25,7 +25,7 @@ function App() {
         <Route exact path="/supremecourt/updatecase" element={<UpdateNewCase/>} />
         <Route exact path="/districtcourt/updatecase" element={<UpdateNewCase/>} />
         <Route exact path="/highcourt/updatecase" element={<UpdateNewCase/>} />
-        <Route exact path="/trackCase" element={<TrackCase/>} />
+        <Route exact path="/trackcase" element={<TrackCase/>} />
       </Routes>
 
       <Footer />

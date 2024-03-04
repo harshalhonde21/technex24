@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import {toast} from 'react-toastify'
 import { useNavigate } from "react-router";
+import axios from 'axios'
+
 
 export const Login = () => {
 
@@ -9,13 +11,23 @@ export const Login = () => {
 
   const navigate = useNavigate() ;
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault() ;
     console.log(userData)
-    toast.success("Login Successful!")
 
-    navigate("/")
+    const res = await axios.post("https://technex24.onrender.com/user/login ",userData) ;
+
+    console.log(res)
+    if(res.status){
+      toast.success("Login Successful!")
+      // navigate("/")
+    }
+
   }
+
+
+
+
 
 
   return (
@@ -34,7 +46,7 @@ export const Login = () => {
                   onChange={(e)=>{
                     setUserData({
                       ...userData,
-                      email: e.target.value
+                      username: e.target.value
                     })
                   }}
                 />

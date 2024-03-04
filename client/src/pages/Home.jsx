@@ -48,11 +48,11 @@ export const Home = () => {
 
   return (
     <>
-      <div className="min-h-screen mx-12 pt-24 ">
+      <div className="min-h-screen md:mx-12 mx-4 md:pt-24 pt-16 ">
         <div className="flex flex-col ">
           <div className="bg-ImageSC min-h-[60vh] over">
             {/* <img src="/assets/supremeCourt.png" alt="" /> */}
-            <div className="flex gap-3 px-4 pt-80 translate-y-16">
+            <div className="flex md:flex-row flex-col justify-center items-center gap-3 px-4 pt-80 translate-y-20">
               {data.map((e) => (
                 <div className="w-40  bg-white rounded-md shadow-md shadow-gray-600 pt-7 pb-2 text-center flex-col flex gap-5">
                   <div className="text-3xl font-extrabold px-2 gradient-font ">
@@ -67,15 +67,15 @@ export const Home = () => {
           </div>
         
         </div>
-        <div className='mt-24'>
+        <div className='mt-44 mb-12'>
             <div className='text-center text-4xl font-semibold'>
                 Latest Updates
             </div>
             <div className='pt-4'>
 
-                <div className='flex justify-between gap-5 p-7'>
-                    <img src="/assets/youtubeCourt.png" className='w-1/2' alt="" />
-                    <img src="/assets/youtubeCourt.png" className='w-1/2' alt="" />
+                <div className='flex md:flex-row flex-col justify-center items-center md:justify-between gap-5 p-7'>
+                    <img src="/assets/youtubeCourt.png" className='md:w-1/2 w-full' alt="" />
+                    <img src="/assets/youtubeCourt.png" className='md:w-1/2 w-full' alt="" />
                 </div>
 
             </div>
