@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+
+
+
+  .cool-underline {
+    border-bottom: 4px solid transparent;
+    transition: border-color 0.3s ease;
+    
+  }
+
+  .cool-underline:hover {
+    border-color: #D7A22A; /* Change to the color you prefer on hover */
+  }
+
+  .gradient-font {
+    background-image: linear-gradient(to bottom, #F0C27B, #4B1248);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    
+   
+  }
+  .gradient-bg {
+    background: linear-gradient(to bottom, #888484, #370203);    
+   
+  }
+  .bgSc {
+    background: #FBF2E4 ;    
+   
+  }
+
+  .subhead-color{
+    color: #8A6E42
+  }
+  .bg-ImageSC{
+    background-image: url('/assets/supremeCourt.png');
+    background-size: cover;
+    width: 100%; /* Adjust width as needed */
+    height: 100%;
+  }
+  .bg-ImageSC2{
+    background-image: url('/assets/supremeCourt2.png');
+    
+    background-size: contain;
+   
+  }
+
+
+  .bg12{
+    background-color: #372723;
+    color: #F0C27B;
+  }
