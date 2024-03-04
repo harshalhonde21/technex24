@@ -43,7 +43,7 @@ const caseSchema = new Schema({
     enum: ['Yes', 'No'],
     required: true
   },
-  holdCasesByDates: {
+  oldCasesByDates: {
     type: String,
     enum: ['Yes', 'No'],
     required: true
