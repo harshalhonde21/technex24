@@ -4,6 +4,7 @@ from sklearn.ensemble import RandomForestClassifier
 import joblib
 from flask_cors import CORS
 
+
 # Loading the model
 model = joblib.load('./random_forest_model.joblib')
 
@@ -44,6 +45,8 @@ def predict_priority():
         return jsonify({'error': str(e)})
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    
+
+    app.run(port=5000, debug=True)
 
 
