@@ -17,7 +17,7 @@ const mongoURI = config.mongoURI;
 //done my setup to connect my mongo cloud to my nodejs/expressjs
 
 mongoose
-  .connect(mongoURI)
-  .then(() => app.listen(69))
-  .then(() => console.log("connected to db at port 69 :)"))
+  .connect(mongoURI)  
+  .then(() => app.listen(5500))
+  .then(() => console.log("connected to db at port 5500 :)"))
   .catch((err) => console.log(`${err} is error`));

@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "npm build",
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "author": "Harshal Honde",
   "license": "ISC",

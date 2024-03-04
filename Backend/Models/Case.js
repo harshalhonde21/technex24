@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const caseSchema = new Schema({
   caseNo: {
-    type: Number,
+    type: String,
     required: true,
     unique: true
   },

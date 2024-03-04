@@ -2,10 +2,9 @@ import Case from "../Models/Case.js";
 
 export const addCase = async (req, res) => {
   try {
-    const lastCase = await Case.findOne().sort({ caseNo: -1 });
-    const newCaseNo = lastCase ? lastCase.caseNo + 1 : 1;
 
     const {
+      caseNo,
       caseDescription,
       caseCategory,
       court,
@@ -21,7 +20,7 @@ export const addCase = async (req, res) => {
     } = req.body;
 
     const newCase = new Case({
-      caseNo: newCaseNo,
+      caseNo,
       caseDescription,
       caseCategory,
       court,
@@ -42,7 +41,7 @@ export const addCase = async (req, res) => {
       .status(201)
       .json({
         status: true,
-        message: `${newCaseNo} is added to ${court}`,
+        message: `${caseNo} is added to ${court}`,
         newCase,
       });
   } catch (error) {
