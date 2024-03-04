@@ -28,9 +28,33 @@ const caseSchema = new Schema({
     type: Date,
     required: true
   },
-  defendant: {
+  publicAffairs: {
     type: String,
+    enum: ['Yes', 'No'],
     required: true
+  },
+  childrenInvolved: {
+    type: String,
+    enum: ['Yes', 'No'],
+    required: true
+  },
+  soleEarningMembers: {
+    type: String,
+    enum: ['Yes', 'No'],
+    required: true
+  },
+  holdCasesByDates: {
+    type: String,
+    enum: ['Yes', 'No'],
+    required: true
+  },
+  parties: {
+    type: [String],
+    required: true
+  },
+  status:{
+    type: String,
+    required:true
   },
   file: {
     type: String, 
