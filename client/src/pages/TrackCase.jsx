@@ -1,23 +1,27 @@
 import { useState } from "react";
+import axios from 'axios'
+
 
 export const TrackCase = () => {
   const [caseNo, setCaseNo] = useState();
-
-  const handleSubmit = (e) => {
+  // ffffff
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(caseNo);
+    const res = await axios.get(`https://technex24.onrender.com/case/getOneCase/${caseNo}`)
+
+    console.log(res);
 
 
-    const downloadPDF = (pdf)=>{
-      const linkSource = `data:application/pdf;base64,${pdf}`;
-      const downloadLink = document.createElement("a");
-      const fileName = "abc.pdf";
-      downloadLink.href = linkSource;
-      downloadLink.download = fileName;
-      downloadLink.click();
+    // const downloadPDF = (pdf)=>{
+    //   const linkSource = `data:application/pdf;base64,${pdf}`;
+    //   const downloadLink = document.createElement("a");
+    //   const fileName = "abc.pdf";
+    //   downloadLink.href = linkSource;
+    //   downloadLink.download = fileName;
+    //   downloadLink.click();
     
-    }
+    // }
 
 
   };
