@@ -8,7 +8,7 @@ export const DistrictCourt = () => {
 
   return (
     <>
-      <div className="min-h-screen mx-12 pt-24">
+      <div className="min-h-screen mx-12 md:pt-24 pt-16">
         <div className="bgSc min-h-[120vh] pt-6">
           <div>
             <p className="gradient-font text-center font-semibold text-4xl">
@@ -21,7 +21,7 @@ export const DistrictCourt = () => {
                   <thead className="text-xs text-gray-700 uppercase bg-gray-400  ">
                     <tr>
                       <th scope="col" className="px-6 py-3">
-                        Priority No.
+                        Priority
                       </th>
                       <th scope="col" className="px-6 py-3">
                         Case Number

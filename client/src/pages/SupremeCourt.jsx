@@ -9,11 +9,11 @@ export const SupremeCourt = () => {
 
   return (
     <>
-      <div className="min-h-screen mx-12 pt-24">
-        <div className="bgSc min-h-[120vh] pt-6">
+      <div className="min-h-screen md:mx-12 mx-4 md:pt-24  pt-16">
+        <div className="bgSc min-h-[120vh] pt-6 md:pb-0 pb-12">
 
             <div>
-            <p className="gradient-font text-center font-semibold text-4xl">
+            <p className="gradient-font text-center font-semibold text-3xl md:text-4xl">
             Priority Dashboard
           </p>
 
@@ -26,7 +26,7 @@ export const SupremeCourt = () => {
         <thead className="text-xs text-gray-700 uppercase bg-gray-400  ">
             <tr>
                 <th scope="col" className="px-6 py-3">
-                    Priority No.
+                    Priority 
                 </th>
                 <th scope="col" className="px-6 py-3">
                     Case Number
