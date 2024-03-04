@@ -79,3 +79,4 @@ const selectedMonth = "January";
 export default function App() {
   return <BarChart barChartData={barChartData} selectedMonth={selectedMonth} />;
 }
+``
