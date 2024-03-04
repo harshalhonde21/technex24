@@ -1,18 +1,32 @@
 import React from "react";
 import { useState } from "react";
+import axios from "axios"
+import {toast} from 'react-toastify'
 
 export const UpdateNewCase = () => {
   const [partiesNum, setPartiesNum] = useState(1);
 
-  const [caseData, setCaseData] = useState({}) ;
+  const [caseData, setCaseData] = useState({
+    parties:["sad"],
+  }) ;
 
-
-  const handleSubmit = (e) => {
+  
+  const handleSubmit = async (e) => {
     e.preventDefault() ;
 
-    console.log(caseData)
+    const res = await axios.post("https://technex24.onrender.com/case/addCase",caseData) ;
+
+    if(res.status){
+      toast.success(res.data.message)
+    }
+    
   }
 
+
+
+ 
+
+ 
 
   return (
     <>
@@ -219,7 +233,7 @@ export const UpdateNewCase = () => {
                     setPartiesNum((prev) => prev - 1)}}
                   className="text-2xl text-red-500"
                 >
-                  
+                  -
                 </button>
               )}
             </div>
@@ -310,10 +324,3 @@ export const UpdateNewCase = () => {
 
 
 */
-
-
-
-
-
-
-
