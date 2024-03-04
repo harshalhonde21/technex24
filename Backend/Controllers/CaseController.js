@@ -2,7 +2,6 @@ import Case from "../Models/Case.js";
 
 export const addCase = async (req, res) => {
   try {
-
     const {
       caseNo,
       caseDescription,
@@ -37,18 +36,17 @@ export const addCase = async (req, res) => {
 
     await newCase.save();
 
-    return res
-      .status(201)
-      .json({
-        status: true,
-        message: `${caseNo} is added to ${court}`,
-        newCase,
-      });
+    return res.status(201).json({
+      status: true,
+      message: `${caseNo} is added to ${court}`,
+      newCase,
+    });
   } catch (error) {
     console.error("Error adding case:", error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
+
 export const getCase = async (req, res) => {
   try {
     const cases = await Case.find();
@@ -61,5 +59,22 @@ export const getCase = async (req, res) => {
   } catch (error) {
     console.error("Error getting all cases:", error);
     return res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+export const getOneCase = async (req, res) => {
+  try {
+   
+    const { caseNo } = req.params ;
+
+
+    const singleCase = await Case.findOne({ caseNo }); 
+  
+
+    return res.status(200).json(singleCase);
+  } catch (error) {
+   res.staus(400).json({
+    succ
+   })
   }
 };
