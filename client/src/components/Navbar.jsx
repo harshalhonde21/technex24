@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { HiBars3 } from "react-icons/hi2";
 import { RxCross1 } from "react-icons/rx";
+import {toast} from 'react-toastify'
 
 export const Navbar = () => {
   const [tog, setTog] = useState(false);
+
+  const [isLogin, setisLogin] = useState(localStorage.getItem("isLogin") ? true : false)
+
+
+  useEffect(()=>{
+    setisLogin(localStorage.getItem("isLogin") ? true : false)
+  },[])
+ 
+  
+
 
   return (
     <>
@@ -48,6 +59,9 @@ export const Navbar = () => {
               <Link to="/trackcase" className=" px-4 cool-underline py-2 ">
                 Track Case
               </Link>
+              {/* <Link to="/dashboard" className=" px-4 cool-underline py-2 ">
+              Dashboard
+              </Link> */}
             </div>
 
             <div className="md:hidden flex">
@@ -57,12 +71,25 @@ export const Navbar = () => {
             </div>
 
             <div className="md:flex hidden">
+              {
+                isLogin ?  <Link
+                onClick={()=>
+                  {localStorage.setItem("isLogin",false)
+                  toast.success("Logout successful!")
+                  setisLogin(false)}
+                } 
+                className="bg-gradient-to-b from-orange-300 to-orange-500 px-5 py-2 rounded-xl text-sm"
+              >
+                Logout
+              </Link> :
+              
               <Link
                 to="/login"
                 className="bg-gradient-to-b from-orange-300 to-orange-500 px-5 py-2 rounded-xl text-sm"
               >
                 Login
               </Link>
+              }
             </div>
           </div>
           
