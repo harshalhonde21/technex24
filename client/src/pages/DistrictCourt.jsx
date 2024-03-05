@@ -39,9 +39,7 @@ export const DistrictCourt = () => {
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500">
                   <thead className="text-xs text-gray-700 uppercase bg-gray-400  ">
                     <tr>
-                      <th scope="col" className="px-6 py-3">
-                        Priority
-                      </th>
+                   
                       <th scope="col" className="px-6 py-3">
                         Case Number
                       </th>
@@ -67,7 +65,7 @@ export const DistrictCourt = () => {
     .filter(singleCase => singleCase.court === "District Court")
     .map((singleCase, index) => (
       <tr key={index}>
-        <td className="px-6 py-4">{index + 1}</td>
+       
         <td className="px-6 py-4">{singleCase.caseNo}</td>
         <td className="px-6 py-4">{singleCase.caseCategory}</td>
         <td className="px-6 py-4">{singleCase.caseDescription}</td>
