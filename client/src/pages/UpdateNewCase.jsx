@@ -29,7 +29,24 @@ export const UpdateNewCase = () => {
   };
   
 
-
+  // {
+  //   
+  //   "caseNo": "vvvvvbghbgsgasdf",
+  //   "caseDescription": "sas",
+  //   "caseCategory": "asdasd",
+  //   "court": "High Court",
+  //   "courtLocation": "asdas",
+  //   "filingDate": "2024-03-20",
+  //   "publicAffairs": "No",
+  //   "childrenInvolved": "No",
+  //   "soleEarningMembers": "Yes",
+  //   "holdCasesByDates": "Yes",
+  //   "status": "completed",
+  //     "parties": [
+    //     "asdasd"
+    //   ],
+  //   "file": "data:applicat"
+  // }
  
 
  
@@ -190,7 +207,7 @@ export const UpdateNewCase = () => {
                   onChange={(e)=>{
                     setCaseData({
                       ...caseData,
-                      holdCasesByDates: e.target.value
+                      oldCasesByDates: e.target.value
                     })
                   }}
                   defaultValue="Hold Cases By Dates"
