@@ -12,16 +12,22 @@ export const UpdateNewCase = () => {
 
   
   const handleSubmit = async (e) => {
-    e.preventDefault() ;
-
-    const res = await axios.post("https://technex24.onrender.com/case/addCase",caseData) ;
-
-    if(res.status){
-      toast.success(res.data.message)
-    }
+    e.preventDefault();
     
-  }
-
+    try {
+      const res = await axios.post("https://technex24.onrender.com/case/addCase", caseData);
+      
+      if (res.status === 201) {
+        toast.success(res.data.message);
+      } else {
+        toast.error("Failed to add case");
+      }
+    } catch (error) {
+      console.error("Error adding case:", error);
+      toast.error("Failed to add case");
+    }
+  };
+  
 
 
  
