@@ -1,9 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios'
 
 export const SupremeCourt = () => {
   const [isLogin, setIsLogin] = useState(localStorage.getItem("isLogin") === "true");
+  const [cases, setCases] = useState() ;
   const userRole = "admin";
+
+
+
+  useEffect(()=>{
+    const getData = async () => {
+      const res = await axios.get("https://technex24.onrender.com/case/getCase")
+  
+      if(res.status == 200){
+        // console.log(cases)
+        console.log(res.data)
+        setCases(res.data)
+        
+      }
+    }
+
+    getData() ;
+  },[])
+
+
 
   return (
     <>
@@ -44,7 +65,20 @@ export const SupremeCourt = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {/* Table body content */}
+                  {cases && cases
+    .filter(singleCase => singleCase.court === "Supreme Court")
+    .map((singleCase, index) => (
+      <tr key={index}>
+        <td className="px-6 py-4">{index + 1}</td>
+        <td className="px-6 py-4">{singleCase.caseNo}</td>
+        <td className="px-6 py-4">{singleCase.caseCategory}</td>
+        <td className="px-6 py-4">{singleCase.caseDescription}</td>
+        <td className="px-6 py-4">{singleCase.parties.join(", ")}</td>
+        <td className="px-6 py-4">{new Date(singleCase.filingDate).toLocaleDateString()}</td>
+        <td className="px-6 py-4">{singleCase.status}</td>
+      </tr>
+  ))}
+
                   </tbody>
                 </table>
               </div>

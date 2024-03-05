@@ -31,6 +31,16 @@ export const TrackCase = () => {
     downloadLink.click();
   };
 
+  const dateTrim = (dateTrim) => {
+    const str = dateTrim.slice(0, 10);
+
+    const year = str.split("-")[0];
+    const month = str.split("-")[1];
+    const day = str.split("-")[2];
+
+    return day + "/" + month + "/" + year;
+  };
+
   return (
     <>
       <>
@@ -100,15 +110,13 @@ export const TrackCase = () => {
                         </tr>
                         <tr>
                           <td className="border px-4 py-2 font-semibold">
-                          Court
+                            Court
                           </td>
-                          <td className="border px-4 py-2">
-                            {caseData.court}
-                          </td>
+                          <td className="border px-4 py-2">{caseData.court}</td>
                         </tr>
                         <tr>
                           <td className="border px-4 py-2 font-semibold">
-                          Court Location
+                            Court Location
                           </td>
                           <td className="border px-4 py-2">
                             {caseData.courtLocation}
@@ -116,16 +124,16 @@ export const TrackCase = () => {
                         </tr>
                         <tr>
                           <td className="border px-4 py-2 font-semibold">
-                         Filling Date
+                            Filling Date
                           </td>
                           <td className="border px-4 py-2">
-                            {caseData.filingDate}
+                            {dateTrim(caseData.filingDate)}
                           </td>
                         </tr>
-                       
+
                         <tr>
                           <td className="border px-4 py-2 font-semibold">
-                          Public Affairs
+                            Public Affairs
                           </td>
                           <td className="border px-4 py-2">
                             {caseData.publicAffairs}
@@ -133,7 +141,7 @@ export const TrackCase = () => {
                         </tr>
                         <tr>
                           <td className="border px-4 py-2 font-semibold">
-                          Children Involved
+                            Children Involved
                           </td>
                           <td className="border px-4 py-2">
                             {caseData.childrenInvolved}
@@ -142,7 +150,7 @@ export const TrackCase = () => {
 
                         <tr>
                           <td className="border px-4 py-2 font-semibold">
-                          Sole Earning Members
+                            Sole Earning Members
                           </td>
                           <td className="border px-4 py-2">
                             {caseData.soleEarningMembers}
@@ -151,7 +159,7 @@ export const TrackCase = () => {
 
                         <tr>
                           <td className="border px-4 py-2 font-semibold">
-                          Old Cases By Dates
+                            Old Cases By Dates
                           </td>
                           <td className="border px-4 py-2">
                             {caseData.oldCasesByDates}
@@ -159,29 +167,33 @@ export const TrackCase = () => {
                         </tr>
                         <tr>
                           <td className="border px-4 py-2 font-semibold">
-                          Parties
+                            Parties
                           </td>
                           <td className="border px-4 py-2">
                             {caseData.parties}
                           </td>
                         </tr>
                         <tr>
-                         <td className="border px-4 py-2 font-semibold">
-                          Status
+                          <td className="border px-4 py-2 font-semibold">
+                            Status
                           </td>
                           <td className="border px-4 py-2">
                             {caseData.status}
                           </td>
-                        </tr> 
+                        </tr>
                         <tr>
-                         <td className="border px-4 py-2 font-semibold">
-                         FIR file
+                          <td className="border px-4 py-2 font-semibold">
+                            FIR file
                           </td>
                           <td className="border px-4 py-2">
-                           
-                            <button className="gradient-bg text-xs px-4  py-2 font-semibold text-white rounded-2xl" onClick={() => downloadPDF(caseData.file)}>Download PDF</button>
+                            <button
+                              className="gradient-bg text-xs px-4  py-2 font-semibold text-white rounded-2xl"
+                              onClick={() => downloadPDF(caseData.file)}
+                            >
+                              Download PDF
+                            </button>
                           </td>
-                        </tr> 
+                        </tr>
                       </>
                     )}
                   </tbody>

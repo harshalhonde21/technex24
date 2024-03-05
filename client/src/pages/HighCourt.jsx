@@ -1,8 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios'
 
 export const HighCourt = () => {
   const userRole = "admin";
+  const [cases, setCases] = useState() ;
+
+  useEffect(()=>{
+    const getData = async () => {
+      const res = await axios.get("https://technex24.onrender.com/case/getCase")
+  
+      if(res.status == 200){
+        // console.log(cases)
+        console.log(res.data)
+        setCases(res.data)
+        
+      }
+    }
+
+    getData() ;
+  },[])
+
 
 
   return (
@@ -43,82 +61,20 @@ export const HighCourt = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="bg-white border-b ">
-                      <th
-                        scope="row"
-                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
-                      >
-                        Apple MacBook Pro 17"
-                      </th>
-                      <td className="px-6 py-4">Silver</td>
-                      <td className="px-6 py-4">Laptop</td>
-                      <td className="px-6 py-4">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Quae temporibus deleniti quo magnam, quibusdam
-                        animi quis iste maxime, fuga distinctio dolore quam
-                        ipsum dolores, id officia molestias illum ratione modi!
-                      </td>
-                      <td className="px-6 py-4">$2999</td>
-                      <td className="px-6 py-4">$2999</td>
-                      <td className="px-6 py-4">$2999</td>
-                    </tr>
-                    <tr className="bg-white border-b ">
-                      <th
-                        scope="row"
-                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
-                      >
-                        Apple MacBook Pro 17"
-                      </th>
-                      <td className="px-6 py-4">Silver</td>
-                      <td className="px-6 py-4">Laptop</td>
-                      <td className="px-6 py-4">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Quae temporibus deleniti quo magnam, quibusdam
-                        animi quis iste maxime, fuga distinctio dolore quam
-                        ipsum dolores, id officia molestias illum ratione modi!
-                      </td>
-                      <td className="px-6 py-4">$2999</td>
-                      <td className="px-6 py-4">$2999</td>
-                      <td className="px-6 py-4">$2999</td>
-                    </tr>
-                    <tr className="bg-white border-b ">
-                      <th
-                        scope="row"
-                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
-                      >
-                        Apple MacBook Pro 17"
-                      </th>
-                      <td className="px-6 py-4">Silver</td>
-                      <td className="px-6 py-4">Laptop</td>
-                      <td className="px-6 py-4">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Quae temporibus deleniti quo magnam, quibusdam
-                        animi quis iste maxime, fuga distinctio dolore quam
-                        ipsum dolores, id officia molestias illum ratione modi!
-                      </td>
-                      <td className="px-6 py-4">$2999</td>
-                      <td className="px-6 py-4">$2999</td>
-                      <td className="px-6 py-4">$2999</td>
-                    </tr>
-                    <tr className="bg-white border-b ">
-                      <th
-                        scope="row"
-                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
-                      >
-                        Apple MacBook Pro 17"
-                      </th>
-                      <td className="px-6 py-4">Silver</td>
-                      <td className="px-6 py-4">Laptop</td>
-                      <td className="px-6 py-4">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Quae temporibus deleniti quo magnam, quibusdam
-                        animi quis iste maxime, fuga distinctio dolore quam
-                        ipsum dolores, id officia molestias illum ratione modi!
-                      </td>
-                      <td className="px-6 py-4">$2999</td>
-                      <td className="px-6 py-4">$2999</td>
-                      <td className="px-6 py-4">$2999</td>
-                    </tr>
+                  {cases && cases
+    .filter(singleCase => singleCase.court === "High Court")
+    .map((singleCase, index) => (
+      <tr key={index}>
+        <td className="px-6 py-4">{index + 1}</td>
+        <td className="px-6 py-4">{singleCase.caseNo}</td>
+        <td className="px-6 py-4">{singleCase.caseCategory}</td>
+        <td className="px-6 py-4">{singleCase.caseDescription}</td>
+        <td className="px-6 py-4">{singleCase.parties.join(", ")}</td>
+        <td className="px-6 py-4">{new Date(singleCase.filingDate).toLocaleDateString()}</td>
+        <td className="px-6 py-4">{singleCase.status}</td>
+      </tr>
+  ))}
+
                   </tbody>
                 </table>
               </div>
