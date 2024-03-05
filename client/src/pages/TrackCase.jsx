@@ -9,8 +9,10 @@ export const TrackCase = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await axios.get(
-      `https://technex24.onrender.com/case/getOneCase/${caseNo}`
+    const res = await axios.post(
+      `https://technex24.onrender.com/case/getOneCase`,{
+        caseNo
+      }
     );
 
     console.log(res);

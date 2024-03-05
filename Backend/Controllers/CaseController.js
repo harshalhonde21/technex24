@@ -67,7 +67,7 @@ export const getCase = async (req, res) => {
 export const getOneCase = async (req, res) => {
   try {
    
-    const { caseNo } = req.params ;
+    const { caseNo } = req.body ;
 
 
     const singleCase = await Case.findOne({ caseNo }); 

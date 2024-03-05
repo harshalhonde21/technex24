@@ -1,27 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from 'axios'
+import axios from "axios";
 
 export const HighCourt = () => {
   const userRole = "admin";
-  const [cases, setCases] = useState() ;
+  const [cases, setCases] = useState();
 
-  useEffect(()=>{
+  useEffect(() => {
     const getData = async () => {
-      const res = await axios.get("https://technex24.onrender.com/case/getCase")
-  
-      if(res.status == 200){
+      const res = await axios.get(
+        "https://technex24.onrender.com/case/getCase"
+      );
+
+      if (res.status == 200) {
         // console.log(cases)
-        console.log(res.data)
-        setCases(res.data)
-        
+        console.log(res.data);
+        setCases(res.data);
       }
-    }
+    };
 
-    getData() ;
-  },[])
-
-
+    getData();
+  }, []);
 
   return (
     <>
@@ -37,7 +36,6 @@ export const HighCourt = () => {
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500">
                   <thead className="text-xs text-gray-700 uppercase bg-gray-400  ">
                     <tr>
-                     
                       <th scope="col" className="px-6 py-3">
                         Case Number
                       </th>
@@ -59,20 +57,31 @@ export const HighCourt = () => {
                     </tr>
                   </thead>
                   <tbody>
-                  {cases && cases
-    .filter(singleCase => singleCase.court === "High Court")
-    .map((singleCase, index) => (
-      <tr key={index}>
-        
-        <td className="px-6 py-4">{singleCase.caseNo}</td>
-        <td className="px-6 py-4">{singleCase.caseCategory}</td>
-        <td className="px-6 py-4">{singleCase.caseDescription}</td>
-        <td className="px-6 py-4">{singleCase.parties.join(", ")}</td>
-        <td className="px-6 py-4">{new Date(singleCase.filingDate).toLocaleDateString()}</td>
-        <td className="px-6 py-4">{singleCase.status}</td>
-      </tr>
-  ))}
-
+                    {cases &&
+                      cases
+                        .filter(
+                          (singleCase) => singleCase.court === "High Court"
+                        )
+                        .map((singleCase, index) => (
+                          <tr key={index}  className="border-b border-gray-300"  >
+                            <td className="px-6 py-4">{singleCase.caseNo}</td>
+                            <td className="px-6 py-4">
+                              {singleCase.caseCategory}
+                            </td>
+                            <td className="px-6 py-4">
+                              {singleCase.caseDescription}
+                            </td>
+                            <td className="px-6 py-4">
+                              {singleCase.parties.join(", ")}
+                            </td>
+                            <td className="px-6 py-4">
+                              {new Date(
+                                singleCase.filingDate
+                              ).toLocaleDateString()}
+                            </td>
+                            <td className="px-6 py-4">{singleCase.status}</td>
+                          </tr>
+                        ))}
                   </tbody>
                 </table>
               </div>
@@ -81,7 +90,7 @@ export const HighCourt = () => {
             {userRole === "admin" && (
               <div className="flex justify-center items-center">
                 <Link
-                  to="/highcourt/updatecase"                
+                  to="/highcourt/updatecase"
                   className="gradient-bg text-sm px-10 py-2 font-semibold text-white rounded-2xl"
                 >
                   Update new Case
@@ -89,8 +98,6 @@ export const HighCourt = () => {
               </div>
             )}
           </div>
-
-          
         </div>
       </div>
     </>
