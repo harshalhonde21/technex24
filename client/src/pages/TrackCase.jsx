@@ -4,6 +4,7 @@ import axios from "axios";
 export const TrackCase = () => {
   const [caseNo, setCaseNo] = useState();
   const [pdf, setPdf] = useState();
+  const [priority, setPriority] = useState() ;
   const [caseData, setCaseData] = useState();
   // ffffff
   const handleSubmit = async (e) => {
@@ -15,12 +16,38 @@ export const TrackCase = () => {
       }
     );
 
+
+
+    // "publicAffairs": false,
+    // "oldCasesByDates": true,
+    // "childrenInvolved": false,
+    // "soleEarningMembers": true,
+    // "caseNumber": "ABC123"
+
     console.log(res);
 
     if (res.data.success) {
       console.log(res.data.singleCase);
       setCaseData(res.data.singleCase);
       setPdf(res.data.singleCase.file);
+
+      const res2 = await axios.post(
+        `http://127.0.0.1:5000/priority`,{
+          publicAffairs: res.data.singleCase.publicAffairs === "Yes" ? true : false ,
+          oldCasesByDates: res.data.singleCase.oldCasesByDates === "Yes" ? true : false ,
+          childrenInvolved: res.data.singleCase.childrenInvolved === "Yes" ? true : false ,
+          soleEarningMembers: res.data.singleCase.soleEarningMembers === "Yes" ? true : false ,
+          caseNumber: res.data.singleCase.caseNo
+        }
+        
+      );
+
+      if(res2.status === 200){
+        setPriority(res2.data.priority)
+        
+
+      }
+
     }
   };
 
@@ -86,6 +113,14 @@ export const TrackCase = () => {
                   <tbody>
                     {caseData && (
                       <>
+                        <tr>
+                          <td className="border px-4 py-2 font-semibold">
+                          Priority
+                          </td>
+                          <td className="border px-4 py-2">
+                            {priority}
+                          </td>
+                        </tr>
                         <tr>
                           <td className="border px-4 py-2 font-semibold">
                             Case No
@@ -172,7 +207,7 @@ export const TrackCase = () => {
                             Parties
                           </td>
                           <td className="border px-4 py-2">
-                            {caseData.parties}
+                            {caseData.parties.join(", ")}
                           </td>
                         </tr>
                         <tr>
